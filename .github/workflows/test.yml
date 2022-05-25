@@ -1,8 +1,19 @@
 name: 测试构建
 
 on:
+  workflow_dispatch:
+    inputs:
+      clean_cache:
+        description: 'Clear caches'
+        required: false
+        type: boolean
   push:
-    branches: [ master ]
+    branches:
+      - master
+    paths:
+      - "docker/**"
+      - "**.sh"
+      - "**.json"
 
 jobs:
   build:
